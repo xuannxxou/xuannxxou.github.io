@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>海上的記憶｜達悟族拼板舟與海洋文化數位典藏</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #07141f;
+      color: #f5f5f5;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 72px;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+      text-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+
+    header p {
+      font-size: 22px;
+      max-width: 900px;
+      color: #d8e6f2;
+      margin-bottom: 35px;
+    }
+
+    .hero-button {
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: #d8a15d;
+      color: #07141f;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .hero-button:hover {
+      transform: scale(1.05);
+      background: #efbe7e;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(10px);
+      padding: 16px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h2 {
+      font-size: 22px;
+      color: #f4c37d;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f4c37d;
+    }
+
+    section {
+      padding: 110px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 18px;
+      color: #f4c37d;
+    }
+
+    .section-title p {
+      color: #c7d4df;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: 0.35s;
+      backdrop-filter: blur(6px);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-content h3 {
+      margin-bottom: 12px;
+      color: #f4c37d;
+      font-size: 26px;
+    }
+
+    .card-content p {
+      color: #d4dce3;
+      font-size: 15px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding: 24px 40px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      background: rgba(255,255,255,0.05);
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-content h3 {
+      color: #f4c37d;
+      margin-bottom: 12px;
+    }
+
+    .interactive-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .interactive-box {
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding: 30px;
+      border-radius: 24px;
+      transition: 0.35s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .interactive-box:hover {
+      background: rgba(244,195,125,0.12);
+      transform: scale(1.03);
+    }
+
+    .interactive-box h3 {
+      margin-bottom: 14px;
+      color: #f4c37d;
+    }
+
+    .reflection {
+      background: rgba(255,255,255,0.04);
+      border-radius: 28px;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: #050d14;
+      color: #94a6b5;
+    }
+
+    .floating-button {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #d8a15d;
+      color: #07141f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: 0.3s;
+    }
+
+    .floating-button:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+      header h1 {
+        font-size: 48px;
+      }
+
+      nav {
+        padding: 14px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 0;
+        left: 0 !important;
+        text-align: left !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <h2>海上的記憶</h2>
+
+  <ul>
+    <li><a href="#about">策展理念</a></li>
+    <li><a href="#collections">典藏展品</a></li>
+    <li><a href="#culture">文化脈絡</a></li>
+    <li><a href="#interactive">互動展示</a></li>
+    <li><a href="#reflection">AI 反思</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>海上的記憶</h1>
+
+  <p>
+    達悟族拼板舟與海洋文化數位典藏
+    <br>
+    從海洋、祭儀與工藝之中，重新理解蘭嶼文化。
+  </p>
+
+  <a href="#about" class="hero-button">進入展覽</a>
+</header>
+
+<section id="about">
+  <div class="section-title">
+    <h2>策展理念</h2>
+
+    <p>
+      本策展以蘭嶼達悟族拼板舟文化為核心，透過數位典藏方式保存海洋知識、祭儀制度與傳統工藝。
+      我們希望觀眾理解：拼板舟並不是單純的交通工具，而是一整套與海洋共存的文化系統。
+    </p>
+  </div>
+</section>
+
+<section id="collections">
+  <div class="section-title">
+    <h2>典藏展品</h2>
+
+    <p>
+      本次策展選擇五項代表性文化展品，從工藝、祭儀、紋樣到海洋空間，建立完整的文化敘事。
+    </p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop" alt="拼板舟">
+
+      <div class="card-content">
+        <h3>傳統拼板舟</h3>
+
+        <p>
+          達悟族最具代表性的海洋文化象徵，船身紋樣與結構皆具有文化與祭儀意義。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=1200&auto=format&fit=crop" alt="飛魚季">
+
+      <div class="card-content">
+        <h3>飛魚季祭儀</h3>
+
+        <p>
+          記錄達悟族與海洋之間的文化關係，以及透過祭儀維持海洋資源平衡的傳統知識。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=1200&auto=format&fit=crop" alt="紋樣藝術">
+
+      <div class="card-content">
+        <h3>船身雕刻紋樣</h3>
+
+        <p>
+          船眼與幾何紋樣象徵守護、方向與家族文化，並非單純裝飾圖騰。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=1200&auto=format&fit=crop" alt="工藝紀錄">
+
+      <div class="card-content">
+        <h3>造船工藝紀錄</h3>
+
+        <p>
+          保存木材切割、拼接與雕刻技術，記錄口述傳承中的文化知識。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="蘭嶼海岸">
+
+      <div class="card-content">
+        <h3>蘭嶼海岸地景</h3>
+
+        <p>
+          展現部落與海域之間的關係，理解文化如何依附於地方環境之中。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="culture">
+  <div class="section-title">
+    <h2>文化故事線</h2>
+
+    <p>
+      本策展以「從海洋出發」作為觀展動線，讓觀眾逐步進入達悟族文化世界。
+    </p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>01 海洋與蘭嶼</h3>
+
+        <p>
+          海洋不只是環境，而是達悟族生活與文化的起點。
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>02 拼板舟工藝</h3>
+
+        <p>
+          從造船、拼接到雕刻，展現族人長期累積的海洋知識。
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>03 飛魚季祭儀</h3>
+
+        <p>
+          透過文化規範維持海洋資源與社群秩序。
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>04 紋樣與象徵</h3>
+
+        <p>
+          船身圖騰承載守護、方向與身份認同。
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <h3>05 數位典藏</h3>
+
+        <p>
+          思考文化在數位化之後，如何被保存與重新理解。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="interactive">
+  <div class="section-title">
+    <h2>互動展示設計</h2>
+
+    <p>
+      本展示加入多項互動元素，讓觀眾不只是閱讀資訊，而是進入文化脈絡之中。
+    </p>
+  </div>
+
+  <div class="interactive-area">
+
+    <div class="interactive-box">
+      <h3>船體互動解說</h3>
+
+      <p>
+        滑鼠移至拼板舟不同區域時，顯示船眼、船首與雕刻紋樣的文化意義。
+      </p>
+    </div>
+
+    <div class="interactive-box">
+      <h3>飛魚祭儀圖示</h3>
+
+      <p>
+        點擊祭儀圖示後，展開對應的海洋文化與禁忌說明。
+      </p>
+    </div>
+
+    <div class="interactive-box">
+      <h3>紋樣切換展示</h3>
+
+      <p>
+        使用者可切換不同紋樣，查看其象徵意義與歷史背景。
+      </p>
+    </div>
+
+    <div class="interactive-box">
+      <h3>文化地圖探索</h3>
+
+      <p>
+        透過地圖了解不同部落與海域之間的文化關聯。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="reflection">
+  <div class="section-title">
+    <h2>AI 使用反思</h2>
+
+    <p>
+      Human + AI 並不是完全依賴 AI，而是透過人工判斷修正 AI 的不足。
+    </p>
+  </div>
+
+  <div class="reflection">
+    <p>
+      在本次策展中，我使用 AI 協助生成 HTML 結構、Metadata 表格與策展文字。
+      但我發現 AI 生成的內容容易偏向旅遊網站風格，缺少文化脈絡與地方知識。
+      
+      因此我重新調整 Prompt，加入「文化保存」、「海洋知識系統」、「祭儀」等關鍵概念，讓輸出結果更接近真正的文化典藏內容。
+      
+      我也人工修改了展示動線與互動設計，使網站不只是資訊堆疊，而是具有故事線的數位展覽。
+      
+      這次作業讓我理解：AI 可以加速創作，但真正讓典藏有價值的，仍然是人對文化的理解與批判性思考。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    數位典藏管理期末報告｜海上的記憶：達悟族拼板舟與海洋文化數位典藏
+    <br>
+    製作者：周暄祐
+  </p>
+</footer>
+
+<a href="#" class="floating-button">↑</a>
+
+</body>
+</html>
